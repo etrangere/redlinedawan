@@ -1,0 +1,14 @@
+
+#custom-button-etape {
+    background-color: #00008B;
+    color: white;
+    border: none;
+    padding: 4px 6px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    height: 30px;
+    margin:  2px;
+    cursor: pointer;
+    border-radius: 8px;
+}

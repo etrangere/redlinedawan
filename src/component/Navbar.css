@@ -1,0 +1,25 @@
+.projectselect{
+    height: 25px;
+    width: 20rem;
+    align-items:baseline;
+    background-color: #004aad;
+    color: #FFFFFF;
+    border-radius: 0;
+}
+
+
+nav {
+    background-color: #2980B9;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+nav img{
+    height: 30px;    
+}
+nav button{
+    height: 20px;
+    background-color: #004aad;
+    color: white;
+}

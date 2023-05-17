@@ -1,0 +1,34 @@
+/*separator container*/
+.separatorContainer {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.panel {
+    flex-grow: 1;
+    overflow: auto;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.dividerStyle {
+    background-color: #ddd;
+    width: 10px;
+    cursor: ew-resize;
+}
+
+.iframe-wrapper {
+    position: relative;
+    padding-bottom: 100%;
+    height: 0;
+}
+
+.iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}

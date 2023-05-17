@@ -1,0 +1,29 @@
+.dropdown {
+ 
+    flex-wrap: wrap;
+    display: flex;
+    justify-content:flex-start;
+    background-color: #80605b;
+    max-height: 25px;
+    background-color: #80605b;
+    color: #fff; 
+    transition: max-height 0.3s ;
+ 
+}
+
+/*#343131,#fcfcfc,#2980B9   for nav*/
+.dropdown:hover {
+    background-color: #80605b;
+    max-height: 350px;
+    transition: max-height 0.3s ;
+    overflow-y: scroll;
+    
+ }
+
+.dropdown a {
+    transition: background-color 0.3s ease;
+}
+
+.dropdown a:hover {
+    background-color: yellowgreen;
+}

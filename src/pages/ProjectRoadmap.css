@@ -1,0 +1,171 @@
+
+.parentro {
+    background-color:lightgray;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+   
+    
+    }
+    .parentro p{
+        font-size: small;
+        margin: 1rem;
+     }
+     .parentro h3{
+        
+        margin: 0.5rem;
+     }
+
+    .divro1 { grid-area: 1 / 1 / 2 / 2;
+        height: 7rem;
+        width: 15rem;
+        border: solid 1px; 
+    }
+    .divro1 img{
+        margin-left: 1rem; 
+        width: 45px !important;
+        height: 45px !important;
+    } 
+    .divro2 { grid-area: 2 / 1 / 3 / 2;
+        height: 7rem;
+        width: 15rem;
+        border: solid 1px; 
+     }
+     .divro2 img{
+        margin-left: 1rem; 
+        width: 45px !important;
+        height: 45px !important;
+    } 
+    .divro3 { grid-area: 3 / 1 / 4 / 2;
+        height: 7rem;
+        width: 15rem;
+        border: solid 1px; 
+     }
+     .divro3 img{
+        margin-left: 1rem; 
+        width: 45px !important;
+        height: 45px !important;
+    } 
+    .divro4 { grid-area: 4 / 1 / 5 / 2; 
+        height: 7rem;
+        width: 15rem;
+        border: solid 1px; 
+    }
+    .divro4 img{
+        margin-left: 1rem; 
+        width: 45px !important;
+        height: 45px !important;
+    } 
+    .divro5 { grid-area: 5 / 1 / 6 / 2;
+        height: 7rem;
+        width: 15rem;
+        border: solid 1px; 
+     }
+     .divro5 img{
+        margin-left: 1rem; 
+        width: 45px !important;
+        height: 45px !important;
+    } 
+    .divro6 { grid-area: 1 / 2 / 2 / 3;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro7 { grid-area: 2 / 2 / 3 / 3;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro8 { grid-area: 3 / 2 / 4 / 3; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+    .divro9 { grid-area: 4 / 2 / 5 / 3; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+    .divro10 { grid-area: 5 / 2 / 6 / 3;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro11 { grid-area: 1 / 3 / 2 / 4;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro12 { grid-area: 2 / 3 / 3 / 4; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+    .divro13 { grid-area: 3 / 3 / 4 / 4;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro14 { grid-area: 4 / 3 / 5 / 4;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro15 { grid-area: 5 / 3 / 6 / 4; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+    .divro16 { grid-area: 1 / 4 / 2 / 5;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro17 { grid-area: 2 / 4 / 3 / 5;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro18 { grid-area: 3 / 4 / 4 / 5;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro19 { grid-area: 4 / 4 / 5 / 5;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro20 { grid-area: 5 / 4 / 6 / 5;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro21 { grid-area: 1 / 5 / 2 / 6;
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+     }
+    .divro22 { grid-area: 2 / 5 / 3 / 6; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+    .divro23 { grid-area: 3 / 5 / 4 / 6; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+    .divro24 { grid-area: 4 / 5 / 5 / 6; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+    .divro25 { grid-area: 5 / 5 / 6 / 6; 
+        height: 7rem;
+        width: 10rem;
+        border: solid 1px; 
+    }
+       

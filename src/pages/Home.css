@@ -1,0 +1,13 @@
+
+  
+  td, th {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
+  .hometable{
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+    margin-top: 4rem;
+  }
