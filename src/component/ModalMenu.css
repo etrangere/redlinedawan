@@ -22,6 +22,7 @@ width: 10%;
 
 .hometable tr, td, th{
     border: solid black 0.1rem;
+    font-size: x-large;
     
 }
 .hometable  th{
