@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProjectsService } from '../service/ProjectsService.js';
 import './Home.css';
 import { Link } from "react-router-dom";
-import Project from './Project';
+
 
 export default function Home() {
   const [projects, setProjects] = useState([]);

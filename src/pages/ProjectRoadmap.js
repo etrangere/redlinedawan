@@ -4,13 +4,16 @@ import image_etiquette from "../img/etiquette.png";
 import image_cible from "../img/cible.png";
 import image_star from "../img/star.png";
 import image_graph from "../img/graph.png";
+import EtapeButtonContainer from '../component/EtapeButtonContainer';
+import DropDown from '../component/DropDown';
 
 
 export default function ProjectRoadmap (){
 
    
     return (<>
-   
+   <EtapeButtonContainer/>
+    <DropDown/>
    
    
     <h1>Project roadmap</h1>

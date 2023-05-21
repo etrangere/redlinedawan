@@ -4,12 +4,16 @@ import image_group from "../img/group.png";
 import image_needs from "../img/heart.png";
 import image_product from "../img/product.png";
 import image_dollar from "../img/dollar.png";
+import EtapeButtonContainer from '../component/EtapeButtonContainer';
+import DropDown from '../component/DropDown';
 
 export default function ProjectVision(){
 
 
     return (<>
-    
+    <EtapeButtonContainer/>
+    <DropDown/>
+   
     
        
     <h1>Project vision</h1>

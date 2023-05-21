@@ -1,10 +1,14 @@
+import DropDown from '../component/DropDown';
+import EtapeButtonContainer from '../component/EtapeButtonContainer';
 import './Developpement.css';
 
 export default function Develppement (){
 
 
     return (<>
-    
+    <EtapeButtonContainer/>
+    <DropDown/>
+   
     
     {/* <!-- Create a container div for the textareas and the "Update" button --> */}
     <div id="textarea-container"> 
