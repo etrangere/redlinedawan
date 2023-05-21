@@ -1,13 +1,46 @@
+td, th {
+  border: 1px solid black;
+  padding: 8px;
+}
+  
+.hometable{
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+  margin-top: 4rem;
+}
 
+.div_home_add_new_project{
   
-  td, th {
-    border: 1px solid black;
-    padding: 8px;
-  }
+  margin: 1rem;
+  display:flex;
+  justify-content: end;
+}
+
+.edit-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.create-input {
+width: 10%;
+}
+
+.div_hometable{
+ 
+  display:flex;
+  justify-content: center;
+}
+
+
+.hometable  th{
+    max-width:35rem;
+    
+}
+
+button{
   
-  .hometable{
-    border-collapse: collapse;
-    width: 90%;
-    margin: auto;
-    margin-top: 4rem;
-  }
+  height: 20px;
+  background-color: #004aad;
+  color: white;
+}
