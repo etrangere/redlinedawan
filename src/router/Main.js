@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import ProjectRoadmap from "../pages/ProjectRoadmap";
 import Ticketing from "../pages/Ticketing";
 import Developpement from "../pages/Developpement";
+import Project from "../pages/Project";
 
 //import Frame from './component/Frame';
 //import Modal from './component/Modal';
@@ -20,7 +21,9 @@ export default function Main(){
             <Route path="projectroadmap"   element= { <ProjectRoadmap/>}/> 
             <Route path="ticketing"   element= { <Ticketing/>}/> 
             <Route path="developpement"   element= { <Developpement/>}/> 
+            <Route path="project"   element= { <Project/>}/> 
             <Route path="*"   element= { <NotFound/>}/> 
+
         </Routes>
         )
     

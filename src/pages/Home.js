@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ProjectsService } from '../service/ProjectsService.js';
 import './Home.css';
+import { Link } from "react-router-dom";
+import Project from './Project';
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
@@ -174,7 +176,7 @@ export default function Home() {
           <tbody>
             {projects.map((item) => (
               <tr key={item.id}>
-                <td>{item.id}</td>
+                <td><Link to="/project" className="nav-link" itemId={item.id}>{item.id}</Link></td>
 
 
                 <td>
