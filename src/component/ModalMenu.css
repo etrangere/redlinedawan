@@ -1,3 +1,37 @@
+.div_home_add_new_project{
+   
+    margin: 1rem;
+    display:flex;
+    justify-content: end;
+}
+
+.edit-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+.create-input {
+width: 10%;
+}
+
+.div_hometable{
+ 
+  display:flex;
+  justify-content: center;
+}
+
 .hometable tr, td, th{
-    border: solid black 2px;
+    border: solid black 0.1rem;
+    
+}
+.hometable  th{
+    max-width:35rem;
+    
+}
+
+button{
+    
+    height: 20px;
+    background-color: #004aad;
+    color: white;
 }
