@@ -1,4 +1,4 @@
-import './SourceButton.css';
+import './ResourceButton.css';
 
 
 export default function SourceButton (props){

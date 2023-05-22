@@ -1,5 +1,5 @@
 import './DropDown.css';
-import SourceButton from './SourceButton';
+import SourceButton from './ResourceButton';
 import { useState } from 'react';
 
 export default function DropDown (props){
