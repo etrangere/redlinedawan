@@ -1,39 +1,56 @@
 import './Navbar.css';
 import image from "../img/logo.png";
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { ProjectsService } from '../service/ProjectsService';
 
-export default function Navbar (){
-   
-        // const prefixraw = window.location.pathname;
-		//const prefix = prefixraw.slice(0, -1);
-		//const currentPath = window.location.pathname;
-	    //const baseUrl = `http://localhost${currentPath}`;
-		//alert(baseUrl); 
+export default function Navbar(props) {
+  const [projects, setProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState('');
 
-    return (
-        <>
-        <nav>
-		<Link to="/" className="nav-link"><img src={image} alt=''></img></Link>
-      
-			{/* <a href=baseUrl+"/home.html" id="btnlogo" target="right"><img  src="./img/logo.png"></a>
-			<!--dropdown--> */}
-			<select className="projectselect" name="pets" id="pet-select">
-				<option value="">--Please choose an option--</option>
-				<option value="dog">Dog</option>
-				<option value="cat">Cat</option>
-				<option value="hamster">Hamster</option>
-				<option value="parrot">Parrot</option>
-				<option value="spider">Spider</option>
-				<option value="goldfish">Goldfish</option>
-			</select>
+  useEffect(() => {
+    const projectsService = new ProjectsService();
 
-			  {/* dropdown */}
-			<div>     
-				{/* <!-- Trigger/Open The Modal --> */}	
-				<button >Login</button>
-			</div>
-	</nav>	
-        </>
-    )
+    const fetchData = async () => {
+      const data = await projectsService.fetchData();
+      setProjects(data);
+    };
 
+    fetchData();
+  }, []);
+
+  const handleSelectChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedProject(selectedValue);
+    window.location.href = `/project/${selectedValue}`;
+  };
+
+  return (
+    <>
+      <nav>
+        <Link to="/" className="nav-link">
+          <img src={image} alt="" />
+        </Link>
+
+        <select
+          className="projectselect"
+          name="pets"
+          id="pet-select"
+          onChange={handleSelectChange}
+          value={selectedProject}
+        >
+          <option value="">-- Please choose a project --</option>
+          {projects.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.id} | {item.name}
+            </option>
+          ))}
+        </select>
+
+        <div>
+          <button>Login</button>
+        </div>
+      </nav>
+    </>
+  );
 }
