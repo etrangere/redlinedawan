@@ -21,9 +21,9 @@ export default function Main(){
             <Route path="projectroadmap"   element= { <ProjectRoadmap/>}/> 
             <Route path="ticketing"   element= { <Ticketing/>}/> 
             <Route path="developpement"   element= { <Developpement/>}/> 
-            <Route path="project"   element= { <Project/>}/> 
+            <Route path={`project/:id`} element={<Project/>} />
             <Route path="*"   element= { <NotFound/>}/> 
-
+            
         </Routes>
         )
     

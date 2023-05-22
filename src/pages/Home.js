@@ -176,9 +176,8 @@ export default function Home() {
           <tbody>
             {projects.map((item) => (
               <tr key={item.id}>
-                <td><Link to="/project" className="nav-link" itemId={item.id}>{item.id}</Link></td>
-
-
+                {/* to send id over link to the project component */}
+                <td><Link to={{ pathname: `project/${item.id}`, state: { id : `${item.id}`} }} className="nav-link" >{item.id}</Link></td>
                 <td>
                   {editingId === item.id ? (
                     <input
