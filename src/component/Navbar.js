@@ -1,10 +1,13 @@
 import './Navbar.css';
 import image from "../img/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { ProjectsService } from '../service/ProjectsService';
 
 export default function Navbar(props) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState('');
 
@@ -19,10 +22,14 @@ export default function Navbar(props) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setSelectedProject(id);
+  }, [id]);
+
   const handleSelectChange = (e) => {
     const selectedValue = e.target.value;
     setSelectedProject(selectedValue);
-    window.location.href = `/project/${selectedValue}`;
+    navigate(`/project/${selectedValue}`);
   };
 
   return (
@@ -34,10 +41,8 @@ export default function Navbar(props) {
 
         <select
           className="projectselect"
-          name="pets"
-          id="pet-select"
-          onChange={handleSelectChange}
           value={selectedProject}
+          onChange={handleSelectChange}
         >
           <option value="">-- Please choose a project --</option>
           {projects.map((item) => (

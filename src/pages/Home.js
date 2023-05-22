@@ -177,7 +177,7 @@ export default function Home(props) {
             {projects.map((item) => (
               <tr key={item.id}>
                 {/* to send id over link to the project component */}
-                <td><Link to={{ pathname: `project/${item.id}`, state: { id : `${item.id}`} }} className="nav-link" >{item.id}</Link></td>
+                <td><Link to={{ pathname: `project/${item.id}`, state: { id : `${item.id}`,name: `${item.name}`} }} className="nav-link" >{item.id}</Link></td>
                 <td>
                   {editingId === item.id ? (
                     <input
