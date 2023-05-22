@@ -17,10 +17,10 @@ export default function Main(){
            {/*  <Route index element = { <Home/>}/>  */}
            
             <Route path="/"   element= { <Home/>}/> 
-            <Route path="projectvision"   element= { <ProjectVision/>}/> 
-            <Route path="projectroadmap"   element= { <ProjectRoadmap/>}/> 
-            <Route path="ticketing"   element= { <Ticketing/>}/> 
-            <Route path="developpement"   element= { <Developpement/>}/> 
+            <Route path={`projectvision/:id`}  element= { <ProjectVision/>}/> 
+            <Route path={`projectroadmap/:id`}   element= { <ProjectRoadmap/>}/> 
+            <Route path={`ticketing/:id`}  element= { <Ticketing/>}/> 
+            <Route path={`developpement/:id`}   element= { <Developpement/>}/> 
             <Route path={`project/:id`} element={<Project/>} />
             <Route path="*"   element= { <NotFound/>}/> 
             

@@ -6,10 +6,13 @@ import image_star from "../img/star.png";
 import image_graph from "../img/graph.png";
 import EtapeButtonContainer from '../component/EtapeButtonContainer';
 import DropDown from '../component/DropDown';
+import { useParams } from 'react-router-dom';
 
 
-export default function ProjectRoadmap (){
-
+export default function ProjectRoadmap (props){
+    
+    const { id } = useParams();
+    console.log(id); 
    
     return (<>
    <EtapeButtonContainer/>

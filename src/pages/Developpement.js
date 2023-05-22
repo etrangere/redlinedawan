@@ -1,8 +1,12 @@
+import { useParams } from 'react-router-dom';
 import DropDown from '../component/DropDown';
 import EtapeButtonContainer from '../component/EtapeButtonContainer';
 import './Developpement.css';
 
-export default function Develppement (){
+export default function Develppement (props){
+
+    const { id } = useParams();
+    console.log(id); 
 
 
     return (<>

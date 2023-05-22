@@ -7,9 +7,8 @@ import DropDown from '../component/DropDown';
 export default function Project (props){
  
     const { id } = useParams();
-    
-      
     console.log(id); 
+    
     return (<>
    
     <EtapeButtonContainer/>

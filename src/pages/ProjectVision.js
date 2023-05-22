@@ -6,9 +6,11 @@ import image_product from "../img/product.png";
 import image_dollar from "../img/dollar.png";
 import EtapeButtonContainer from '../component/EtapeButtonContainer';
 import DropDown from '../component/DropDown';
+import { useParams } from 'react-router-dom';
 
-export default function ProjectVision(){
-
+export default function ProjectVision(props){
+    const { id } = useParams();
+    console.log(id); 
 
     return (<>
     <EtapeButtonContainer/>
