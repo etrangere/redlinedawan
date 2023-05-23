@@ -1,6 +1,7 @@
+import './ResourceButton.css';
 import React, { useEffect, useState } from 'react';
 
-export default function SourceButton({ name, link }) {
+export default function ResourceButton({ name, link }) {
   const [loading, setLoading] = useState(true);
   const [resourceButtons, setResourceButtons] = useState([]);
 
@@ -26,10 +27,10 @@ export default function SourceButton({ name, link }) {
 
   // Render the resource buttons
   return (
-    <div>
+    <div id='button-container' >
       {resourceButtons.map((button) => (
         <a href={button.link} key={button.id} target="_blank" rel="noopener noreferrer">
-          {button.name}
+          <div  className='source-button'>{button.name}</div>
         </a>
       ))}
     </div>
