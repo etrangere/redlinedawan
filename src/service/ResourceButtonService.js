@@ -3,13 +3,13 @@ const BASE_URL = "http://localhost:8080";
 export class ResourceButtonService {
   
   fetchData = async () => {
-    const response = await fetch(`${BASE_URL}/resourcebutton`);
+    const response = await fetch(`${BASE_URL}/resources`);
     const data = await response.json();
     return data;
   };
-
-  createData = async (newData) => {
-    const response = await fetch(`${BASE_URL}/resourcebutton`, {
+/* ?projectId=${projectId} */
+  createData = async (/* projectId, */ newData) => {
+    const response = await fetch(`${BASE_URL}/resources`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -19,9 +19,9 @@ export class ResourceButtonService {
     const data = await response.json();
     return data;
   };
-
+  
   updateData = async (id, updatedData) => {
-    const response = await fetch(`${BASE_URL}/resourcebutton/${id}`, {
+    const response = await fetch(`${BASE_URL}/resources/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export class ResourceButtonService {
   };
 
   deleteData = async (id) => {
-    const response = await fetch(`${BASE_URL}/resourcebutton/${id}`, {
+    const response = await fetch(`${BASE_URL}/resources/${id}`, {
       method: 'DELETE',
     });
     const data = await response.json();

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ResourceButtonService } from '../service/ResourceButtonService.js';
-import { Link } from 'react-router-dom';
 
-export default function ResourceButtonContainer(){
 
+export default function ResourceButtonContainer(props){
+   
 
     const [resourcebutton, setResourcebutton] = useState([]);
     const [newData, setNewData] = useState({
@@ -44,8 +44,11 @@ export default function ResourceButtonContainer(){
         version: '',
       });
       setShowCreateForm(false);
+      console.log(result)
     };
   
+    
+
     const handleUpdate = async (id) => {
       const resourcebuttonservice = new ResourceButtonService();
       // Find the item being edited
@@ -97,21 +100,21 @@ export default function ResourceButtonContainer(){
                   type="text"
                   value={newData.progress_rate}
                   onChange={(e) => setNewData({ ...newData, type: e.target.value })}
-                  placeholder='Progress Rate'/>
+                  placeholder='File type PDF,Word...'/>
                 
                 <input
                   className="create-input"
                   type="text"
                   value={newData.status}
                   onChange={(e) => setNewData({ ...newData, link: e.target.value })}
-                  placeholder='Status'/>
+                  placeholder='Link'/>
                   
                 <input
                   className="create-input"
                   type="text"
                   value={newData.dead_line}
                   onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
-                  placeholder='Deadline'/>
+                  placeholder='Link type'/>
                 
                 
                 <input
@@ -153,8 +156,9 @@ export default function ResourceButtonContainer(){
             <thead>
             <tr>
                   <th>ID</th>
-                  <th>Name</th>
+                  <th>Name/Button text</th>
                   <th>Type</th>
+                  <th>Link/URL</th>
                   <th>link_type</th>
                   <th>First Saving Date/Time</th>
                   <th>Last Update Date/Time</th>
@@ -166,7 +170,7 @@ export default function ResourceButtonContainer(){
               {resourcebutton.map((item) => (
                 <tr key={item.id}>
                   {/* to send id over link to the project component */}
-                  <td><Link to={{ pathname: `resourcebutton/${item.id}`, state: { id : `${item.id}`,name: `${item.name}`} }} className="nav-link" >{item.id}</Link></td>
+                  <td>{item.id}</td>
                   <td>
                     {editingId === item.id ? (
                       <input
@@ -281,11 +285,8 @@ export default function ResourceButtonContainer(){
 
     
     <form>
-                    <label htmlFor="url">URL:</label>
-                    <input type="text" id="url" name="url"></input><br></br>
-                    <label htmlFor="text">Button Text:</label>
-                    <input type="text" id="text" name="text" maxLength="26"></input><br></br>
-                    <label htmlFor="color">Select file type:</label>
+
+                    {/* <label htmlFor="color">Select file type:</label>
                     <select id="color" name="color">
                         <option value="PDF">PDF</option>
                         <option value="WORD">WORD</option>
@@ -293,11 +294,11 @@ export default function ResourceButtonContainer(){
                         <option value="JPEG">JPEG</option>
                         <option value="SVG">SVG</option>
                         <option value="SITE_ADDRESS">URL</option>
-                    </select><br></br>
+                    </select><br></br> */}
                     
-                    <label htmlFor="file">Selectfile to upload:</label>
-                    <input type="file" id="file" name="file" disabled></input><br></br>
-                    <input type="button" id="create" value="Create Resource Button" /* onclick="createButton()" */></input>
+                    {/* <label htmlFor="file">Selectfile to upload:</label> */}
+                    {/* <input type="file" id="file" name="file" disabled></input><br></br> */}
+          
                 </form>
                 <div id="button-container"></div>
                 <div className="remove-container" id="remove-container"></div>
