@@ -32,19 +32,8 @@ export default function DropDown (props){
             }}
         >
             {/* create button with name and url */}
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/> 
-            <SourceButton name="1"/>
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
-            <SourceButton name="1"/>  
+            <SourceButton />  
+            
         </div>
     )
 }
