@@ -3,8 +3,15 @@ const BASE_URL = "http://localhost:8080";
 export class ProjectsService {
   
   fetchData = async () => {
-    const response = await fetch(`${BASE_URL}/projects`);
+    const response = await fetch(`${BASE_URL}/projects`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+     
+    });
     const data = await response.json();
+    console.log(data.JSON)
     return data;
   };
 

@@ -3,9 +3,17 @@ const BASE_URL = "http://localhost:8080";
 export class ResourceButtonService {
   
   fetchData = async () => {
-    const response = await fetch(`${BASE_URL}/resources`);
+    const response = await fetch(`${BASE_URL}/resources`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+     
+    });
     const data = await response.json();
+
     return data;
+   
   };
 /* ?projectId=${projectId} */
   createData = async (/* projectId, */ newData) => {

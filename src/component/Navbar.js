@@ -15,8 +15,12 @@ export default function Navbar(props) {
     const projectsService = new ProjectsService();
 
     const fetchData = async () => {
-      const data = await projectsService.fetchData();
-      setProjects(data);
+      try {
+        const data = await projectsService.fetchData();
+        setProjects(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     fetchData();
