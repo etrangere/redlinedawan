@@ -95,61 +95,68 @@ export default function ResourceButtonContainer(props){
                 {/* Add input fields for each required field */}
                 
                 <input
-                  className="create-input"
-                  type="text"
-                  value={newData.name}
-                  onChange={(e) => setNewData({ ...newData, name: e.target.value })}
-                placeholder='Name'/>
-                
-                <input
-                  className="create-input"
-                  type="text"
-                  value={newData.progress_rate}
-                  onChange={(e) => setNewData({ ...newData, type: e.target.value })}
-                  placeholder='File type PDF,Word...'/>
-                
-                <input
-                  className="create-input"
-                  type="text"
-                  value={newData.status}
-                  onChange={(e) => setNewData({ ...newData, link: e.target.value })}
-                  placeholder='Link'/>
-                  
-                <input
-                  className="create-input"
-                  type="text"
-                  value={newData.dead_line}
-                  onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
-                  placeholder='Link type'/>
-                
-                
-                <input
-                  type="text"
-                  value={newData.first_saving_date_time}
-                  onChange={(e) => setNewData({ ...newData, first_saving_date_time: e.target.value })}
-                  placeholder='First Saving Date/Time'/>
-  
-                
-                <input
-                  className="create-input"
-                  type="text"
-                  value={newData.last_update_date_time}
-                  onChange={(e) => setNewData({ ...newData, last_update_date_time: e.target.value })}
-                  placeholder='Last Update Date/Time'/>
-  
-                <input
-                  className="create-input"
-                  type="text"
-                  value={newData.version}
-                  onChange={(e) => setNewData({ ...newData, version: e.target.value })}
-                  placeholder='Version'/>
-
-                <input
-                  className="create-input"
-                  type="text"
-                  value={newData.projects=projectId}
-                  onChange={(e) => setNewData({ ...newData, projects: e.target.value })}
-                  placeholder='Projects'/>  
+                      className="create-input"
+                      type="text"
+                      value={newData.name}
+                      onChange={(e) => setNewData({ ...newData, name: e.target.value })}
+                      placeholder='Name'
+                      key="name" // Add key prop
+                    />
+                    <input
+                      className="create-input"
+                      type="text"
+                      value={newData.type}
+                      onChange={(e) => setNewData({ ...newData, type: e.target.value })}
+                      placeholder='File type PDF,Word...'
+                      key="type" // Add key prop
+                    />
+                    <input
+                      className="create-input"
+                      type="text"
+                      value={newData.link}
+                      onChange={(e) => setNewData({ ...newData, link: e.target.value })}
+                      placeholder='Link'
+                      key="link" // Add key prop
+                    />
+                    <input
+                      className="create-input"
+                      type="text"
+                      value={newData.link_type}
+                      onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
+                      placeholder='Link type'
+                      key="link_type" // Add key prop
+                    />
+                    <input
+                      type="text"
+                      value={newData.first_saving_date_time}
+                      onChange={(e) => setNewData({ ...newData, first_saving_date_time: e.target.value })}
+                      placeholder='First Saving Date/Time'
+                      key="first_saving_date_time" // Add key prop
+                    />
+                    <input
+                      className="create-input"
+                      type="text"
+                      value={newData.last_update_date_time}
+                      onChange={(e) => setNewData({ ...newData, last_update_date_time: e.target.value })}
+                      placeholder='Last Update Date/Time'
+                      key="last_update_date_time" // Add key prop
+                    />
+                    <input
+                      className="create-input"
+                      type="text"
+                      value={newData.version}
+                      onChange={(e) => setNewData({ ...newData, version: e.target.value })}
+                      placeholder='Version'
+                      key="version" // Add key prop
+                    />
+                    <input
+                      className="create-input"
+                      type="text"
+                      value={newData.projects={id:projectId}}
+                      onChange={(e) => setNewData({ ...newData, projects: e.target.value })}
+                      placeholder={projectId}
+                      key="projects" // Add key prop
+                    />
   
                 <button type="button" onClick={handleCreate}>
                   Create
@@ -191,6 +198,7 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.name}
                         onChange={(e) => setNewData({ ...newData, name: e.target.value })}
+                        key={item.id + '-name'} // Add key prop
                       />
                     ) : (
                       item.name
@@ -204,8 +212,8 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.type}
                         onChange={(e) =>
-                          setNewData({ ...newData, progress_rate: e.target.value })
-                        }
+                          setNewData({ ...newData, progress_rate: e.target.value })}
+                          key={item.id + '-type'} // Add key prop
                       />
                     ) : (
                       item.type
@@ -219,6 +227,7 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.link}
                         onChange={(e) => setNewData({ ...newData, status: e.target.value })}
+                        key={item.id + '-link'} // Add key prop
                       />
                     ) : (
                       item.link
@@ -231,6 +240,7 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.link_type}
                         onChange={(e) => setNewData({ ...newData, dead_line: e.target.value })}
+                        key={item.id + '-link_type'} // Add key prop
                       />
                     ) : (
                       item.link_type
@@ -243,6 +253,7 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.first_saving_date_time}
                         onChange={(e) => setNewData({ ...newData, first_saving_date_time: e.target.value })}
+                        key={item.id + '-first_saving_date_time'} // Add key prop
                       />
                     ) : (
                       item.first_saving_date_time
@@ -255,6 +266,7 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.last_update_date_time}
                         onChange={(e) => setNewData({ ...newData, last_update_date_time: e.target.value })}
+                        key={item.id + '-last_update_date_time'} // Add key prop
                       />
                     ) : (
                       item.last_update_date_time
@@ -267,12 +279,25 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.version}
                         onChange={(e) => setNewData({ ...newData, version: e.target.value })}
+                        key={item.id + '-version'} // Add key prop
                       />
                     ) : (
                       item.version
                     )}
                   </td>
-                  
+                  <td>
+                    {editingId === item.id ? (
+                      <input
+                        className="edit-input"
+                        type="text"
+                        value={newData.projects={id:projectId}}
+                        onChange={(e) => setNewData({ ...newData, projects: e.target.value })}
+                        key={item.id + '-version'} // Add key prop
+                      />
+                    ) : (
+                      item.version
+                    )}
+                  </td>
                 
                   <td>
                     {editingId === item.id ? (
@@ -288,7 +313,7 @@ export default function ResourceButtonContainer(props){
               ))}
             </tbody>
           </table>
-          
+    
         </div>
     </div>    
   
