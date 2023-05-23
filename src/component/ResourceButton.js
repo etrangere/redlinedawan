@@ -29,7 +29,7 @@ export default function ResourceButton({ name, link }) {
   return (
     <div id='button-container' >
       {resourceButtons.map((button) => (
-        <a href={button.link} key={button.id} target="_blank" rel="noopener noreferrer">
+        <a href={button.link} key={button.id}  rel="noopener noreferrer" target="frame1">
           <div  className='source-button'>{button.name}</div>
         </a>
       ))}

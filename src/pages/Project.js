@@ -4,7 +4,7 @@ import DropDown from '../component/DropDown';
 //import { useEffect } from 'react';
 
 
-export default function Project (props){
+export default function Project (props,{ name, link }){
  
     const { id } = useParams();
     console.log(id); 
@@ -13,7 +13,8 @@ export default function Project (props){
    
     <EtapeButtonContainer/>
     <DropDown/>
-    hello
+   
+    <iframe src="" width="100%" height="100%" id="frame1" title="frame1"></iframe>
     </>)
 
 
