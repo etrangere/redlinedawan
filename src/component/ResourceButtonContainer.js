@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { ResourceButtonService } from '../service/ResourceButtonService.js';
+import { useParams } from 'react-router-dom';
 
 
 export default function ResourceButtonContainer(props){
    
+  const { id } = useParams();
+
+  const projectId = id;
 
     const [resourcebutton, setResourcebutton] = useState([]);
     const [newData, setNewData] = useState({
@@ -14,6 +18,7 @@ export default function ResourceButtonContainer(props){
       first_saving_date_time: '',
       last_update_date_time: '',
       version: '',
+      projects: ''
     });
     const [editingId, setEditingId] = useState(null);
     const [showCreateForm, setShowCreateForm] = useState(false);
@@ -42,6 +47,7 @@ export default function ResourceButtonContainer(props){
         first_saving_date_time: '',
         last_update_date_time: '',
         version: '',
+        projects:''
       });
       setShowCreateForm(false);
       console.log(result)
@@ -137,6 +143,13 @@ export default function ResourceButtonContainer(props){
                   value={newData.version}
                   onChange={(e) => setNewData({ ...newData, version: e.target.value })}
                   placeholder='Version'/>
+
+                <input
+                  className="create-input"
+                  type="text"
+                  value={newData.projects=projectId}
+                  onChange={(e) => setNewData({ ...newData, projects: e.target.value })}
+                  placeholder='Projects'/>  
   
                 <button type="button" onClick={handleCreate}>
                   Create
