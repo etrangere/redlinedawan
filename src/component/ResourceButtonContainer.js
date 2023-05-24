@@ -213,7 +213,7 @@ export default function ResourceButtonContainer(props){
                         type="text"
                         value={newData.type}
                         onChange={(e) =>
-                          setNewData({ ...newData, progress_rate: e.target.value })}
+                          setNewData({ ...newData, type: e.target.value })}
                           key={item.id + '-type'} // Add key prop
                       />
                     ) : (
@@ -221,32 +221,34 @@ export default function ResourceButtonContainer(props){
                     )}
                   </td>
                   {/* ... */}
+                 
                   <td>
-                    {editingId === item.id ? (
-                      <input
-                        className="edit-input"
-                        type="text"
-                        value={newData.link}
-                        onChange={(e) => setNewData({ ...newData, status: e.target.value })}
-                        key={item.id + '-link'} // Add key prop
-                      />
-                    ) : (
-                      item.link
-                    )}
-                  </td>
-                  <td>
-                    {editingId === item.id ? (
-                      <input
-                        className="edit-input"
-                        type="text"
-                        value={newData.link_type}
-                        onChange={(e) => setNewData({ ...newData, dead_line: e.target.value })}
-                        key={item.id + '-link_type'} // Add key prop
-                      />
-                    ) : (
-                      item.link_type
-                    )}
-                  </td>
+  {editingId === item.id ? (
+    <input
+      className="edit-input"
+      type="text"
+      value={newData.link}
+      onChange={(e) => setNewData({ ...newData, link: e.target.value })}
+      key={item.id + '-link'} // Add key prop
+    />
+  ) : (
+    item.link
+  )}
+</td>
+
+<td>
+  {editingId === item.id ? (
+    <input
+      className="edit-input"
+      type="text"
+      value={newData.link_type}
+      onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
+      key={item.id + '-link_type'} // Add key prop
+    />
+  ) : (
+    item.link_type
+  )}
+</td>
                   <td>
                     {editingId === item.id ? (
                       <input
