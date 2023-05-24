@@ -214,18 +214,25 @@ export default function ResourceButtonContainer(props){
                   </td>
                 
                   <td>
-                    {editingId === item.id ? (
-                      <input
-                        className="edit-input"
-                        type="text"
-                        value={newData.type}
-                        onChange={(e) =>   setNewData({ ...newData, type: e.target.value })}
-                          key={item.id + '-type'} // Add key prop
-                      />
-                    ) : (
-                      item.type
-                    )}
-                  </td>
+                        {editingId === item.id ? (
+                          <select
+                            className="edit-input"
+                            type="text"
+                            value={newData.type}
+                            onChange={(e) => setNewData({ ...newData,type: e.target.value })}
+                            key={item.id + '-link_type'} // Add key prop
+                          >
+                            <option value="PDF">PDF</option>
+                            <option value="WORD">WORD</option>
+                            <option value="PNG">PNG</option>
+                            <option value="JPEG">JPEG</option>
+                            <option value="SVG">SVG</option>
+                            <option value="SITE_ADDRESS">URL</option>
+                          </select>
+                        ) : (
+                          item.type
+                        )}
+                      </td>
                   {/* ... */}
                  
                   <td>
@@ -244,19 +251,15 @@ export default function ResourceButtonContainer(props){
 
                     <td>
                         {editingId === item.id ? (
-                          <select
+                          <input
                             className="edit-input"
+                            type="text"
                             value={newData.link_type}
                             onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
                             key={item.id + '-link_type'} // Add key prop
                           >
-                            <option value="PDF">PDF</option>
-                            <option value="WORD">WORD</option>
-                            <option value="PNG">PNG</option>
-                            <option value="JPEG">JPEG</option>
-                            <option value="SVG">SVG</option>
-                            <option value="SITE_ADDRESS">URL</option>
-                          </select>
+
+                          </input>
                         ) : (
                           item.link_type
                         )}
