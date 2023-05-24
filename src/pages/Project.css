@@ -1,7 +1,8 @@
 body{
-    height: 100%;
+    height: 800px;
 }
 
 #frame1{
-   height: 100%;
+   height: 800px;
+   width: 800px;
 }

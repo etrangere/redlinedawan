@@ -16,8 +16,8 @@ export default function Ticketing(props) {
       try {
         const response = await fetch(`http://localhost:8080/ticketing`); // Replace with your API endpoint
         const data = await response.json();
-        setTicketingButton({ url: data.url });
-       
+        setTicketingButton({url:data[0].url });
+      // console.log( data[0].url )
         setLoading(false);
       } catch (error) {
         console.error('Error fetching ticketing button:', error);
@@ -41,7 +41,7 @@ export default function Ticketing(props) {
     <DropDown />
     <div>
       {ticketingButton.url ? (
-        <iframe src={ticketingButton.url} title="Ticketing" />
+        <iframe src={ticketingButton.url} title="Ticketing" height="900" width="1600" />
       ) : (
         <p>No ticketing URL available.</p>
       )}
