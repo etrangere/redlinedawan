@@ -13,8 +13,8 @@ export default function Project (props,{ name, link }){
    
     <EtapeButtonContainer/>
     <DropDown/>
-   
-    <iframe src="" width="100%" height="100%" id="frame1" title="frame1"></iframe>
+ 
+    <iframe name="frame1" src="" width="100%" height="100%" id="frame1" title="frame1" type="application/pdf"></iframe>
     </>)
 
 

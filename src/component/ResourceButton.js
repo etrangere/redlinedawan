@@ -21,16 +21,28 @@ export default function ResourceButton({ name, link }) {
     fetchResourceButtons();
   }, []);
 
+  const handleClick = (link) => {
+    const frame = window.frames['frame1'];
+    if (frame) {
+      frame.src = link;
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   // Render the resource buttons
   return (
-    <div id='button-container' >
+    <div id='button-container'>
       {resourceButtons.map((button) => (
-        <a href={button.link} key={button.id}  rel="noopener noreferrer" target="frame1">
-          <div  className='source-button'>{button.name}</div>
+        <a
+          href={button.link}
+          key={button.id}
+          onClick={() => handleClick(button.link)}
+          rel="noopener noreferrer"
+        >
+          <div className='source-button'>{button.name}</div>
         </a>
       ))}
     </div>
