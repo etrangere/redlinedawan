@@ -110,7 +110,7 @@ export default function Home(props) {
                 
               <input
                 className="create-input"
-                type="text"
+                type="date"
                 value={newData.dead_line}
                 onChange={(e) => setNewData({ ...newData, dead_line: e.target.value })}
                 placeholder='Deadline'/>
@@ -124,7 +124,8 @@ export default function Home(props) {
               
 
               <input
-                type="text"
+                className="create-input"
+                type="date"
                 value={newData.first_saving_date_time}
                 onChange={(e) => setNewData({ ...newData, first_saving_date_time: e.target.value })}
                 placeholder='First Saving Date/Time'/>
@@ -132,7 +133,7 @@ export default function Home(props) {
               
               <input
                 className="create-input"
-                type="text"
+                type="date"
                 value={newData.last_update_date_time}
                 onChange={(e) => setNewData({ ...newData, last_update_date_time: e.target.value })}
                 placeholder='Last Update Date/Time'/>
@@ -222,7 +223,7 @@ export default function Home(props) {
                   {editingId === item.id ? (
                     <input
                       className="edit-input"
-                      type="text"
+                      type="date"
                       value={newData.dead_line}
                       onChange={(e) => setNewData({ ...newData, dead_line: e.target.value })}
                     />
@@ -246,7 +247,7 @@ export default function Home(props) {
                   {editingId === item.id ? (
                     <input
                       className="edit-input"
-                      type="text"
+                      type="date"
                       value={newData.first_saving_date_time}
                       onChange={(e) => setNewData({ ...newData, first_saving_date_time: e.target.value })}
                     />
@@ -258,7 +259,7 @@ export default function Home(props) {
                   {editingId === item.id ? (
                     <input
                       className="edit-input"
-                      type="text"
+                      type="date"
                       value={newData.last_update_date_time}
                       onChange={(e) => setNewData({ ...newData, last_update_date_time: e.target.value })}
                     />
