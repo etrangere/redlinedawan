@@ -183,6 +183,7 @@ export default function ResourceButtonContainer(props){
                   <th>First Saving Date/Time</th>
                   <th>Last Update Date/Time</th>
                   <th>Version</th>
+                  <th>#</th>
                   <th>Actions</th>
                 </tr>
             </thead>

@@ -1,5 +1,9 @@
-
-
+main{
+  height: 100rem;
+}
+body{
+  height: 100rem;
+}
 .small{
   margin-top: 3rem;
   text-align: center;
