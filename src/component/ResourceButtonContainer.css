@@ -1,0 +1,13 @@
+.div_modal_resourcebutton_table{
+  margin: 1rem;
+  display:flex;
+  justify-content: flex-end;
+}
+
+.modal_resourcebutton_table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    margin-top: 4rem;
+   
+}

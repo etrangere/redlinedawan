@@ -1,3 +1,4 @@
+import "./ResourceButtonContainer.css"
 import { useEffect, useState } from 'react';
 import { ResourceButtonService } from '../service/ResourceButtonService.js';
 import { useParams } from 'react-router-dom';
@@ -175,9 +176,9 @@ export default function ResourceButtonContainer(props){
               <button onClick={toggleCreateForm}>Add new resource button</button>
             )}
         </div>
-        <div className='div_hometable'>
+        <div className='div_modal_resourcebutton_table'>
             {/* table with projects */}
-            <table className='hometable'>
+            <table className='modal_resourcebutton_table'>
           
             <thead>
             <tr>
