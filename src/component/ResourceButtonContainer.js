@@ -102,14 +102,20 @@ export default function ResourceButtonContainer(props){
                       placeholder='Name'
                       key="name" // Add key prop
                     />
-                    <input
-                      className="create-input"
-                      type="text"
-                      value={newData.type}
-                      onChange={(e) => setNewData({ ...newData, type: e.target.value })}
-                      placeholder='File type PDF,Word...'
-                      key="type" // Add key prop
-                    />
+                    <select
+                          className="create-input"
+                          value={newData.type}
+                          onChange={(e) => setNewData({ ...newData, type: e.target.value })}
+                          key="link_type" // Add key prop
+                        >
+                          <option value="">Select resource type</option>
+                          <option value="PDF">PDF</option>
+                          <option value="WORD">WORD</option>
+                          <option value="PNG">PNG</option>
+                          <option value="JPEG">JPEG</option>
+                          <option value="SVG">SVG</option>
+                          <option value="SITE_ADDRESS">URL</option>
+                        </select>
                     <input
                       className="create-input"
                       type="text"
@@ -236,18 +242,24 @@ export default function ResourceButtonContainer(props){
                     </td>
 
                     <td>
-                      {editingId === item.id ? (
-                        <input
-                          className="edit-input"
-                          type="text"
-                          value={newData.link_type}
-                          onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
-                          key={item.id + '-link_type'} // Add key prop
-                        />
-                      ) : (
-                        item.link_type
-                      )}
-                    </td>
+                        {editingId === item.id ? (
+                          <select
+                            className="edit-input"
+                            value={newData.link_type}
+                            onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
+                            key={item.id + '-link_type'} // Add key prop
+                          >
+                            <option value="PDF">PDF</option>
+                            <option value="WORD">WORD</option>
+                            <option value="PNG">PNG</option>
+                            <option value="JPEG">JPEG</option>
+                            <option value="SVG">SVG</option>
+                            <option value="SITE_ADDRESS">URL</option>
+                          </select>
+                        ) : (
+                          item.link_type
+                        )}
+                      </td>
                   <td>
                     {editingId === item.id ? (
                       <input
@@ -324,24 +336,8 @@ export default function ResourceButtonContainer(props){
 
 
     
-    <form>
-
-                    {/* <label htmlFor="color">Select file type:</label>
-                    <select id="color" name="color">
-                        <option value="PDF">PDF</option>
-                        <option value="WORD">WORD</option>
-                        <option value="PNG">PNG</option>
-                        <option value="JPEG">JPEG</option>
-                        <option value="SVG">SVG</option>
-                        <option value="SITE_ADDRESS">URL</option>
-                    </select><br></br> */}
-                    
-                    {/* <label htmlFor="file">Selectfile to upload:</label> */}
-                    {/* <input type="file" id="file" name="file" disabled></input><br></br> */}
-          
-                </form>
-                <div id="button-container"></div>
-                <div className="remove-container" id="remove-container"></div>
+   
+               
                 <hr></hr>
                 <h1>Add Trello account</h1>
                 <label htmlFor="urlapi">URL of API:</label>
