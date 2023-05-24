@@ -42,20 +42,20 @@ export class ResourceButtonService {
 
   deleteData = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/projects/${id}`, {
+    const response = await fetch(`${BASE_URL}/resources/${id}`, {
       method: 'DELETE',
     });
 
     if (!response.ok) {
       // Handle error response here
-      throw new Error('Failed to delete project');
+      throw new Error('Failed to delete resources');
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
     // Handle fetch or JSON parsing errors here
-    console.error('Error deleting project:', error);
+    console.error('Error deleting resources:', error);
     throw error;
   }
 };

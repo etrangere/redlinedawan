@@ -40,10 +40,23 @@ export class ProjectsService {
   };
 
   deleteData = async (id) => {
-    const response = await fetch(`${BASE_URL}/projects/${id}`, {
-      method: 'DELETE',
-    });
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch(`${BASE_URL}/projects/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (!response.ok) {
+        // Handle error response here
+        throw new Error('Failed to delete project');
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      // Handle fetch or JSON parsing errors here
+      console.error('Error deleting project:', error);
+      throw error;
+    }
   };
+  
 }
