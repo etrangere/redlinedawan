@@ -180,7 +180,7 @@ export default function ResourceButtonContainer(props){
             {/* table with projects */}
             <table className='modal_resourcebutton_table'>
           
-            <thead>
+            <thead id="modal_resourcebutton_table_head">
             <tr>
                   <th>ID</th>
                   <th>Name/Button text</th>

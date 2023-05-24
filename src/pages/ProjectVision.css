@@ -4,16 +4,16 @@
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    height: 48rem;
-  
+    height: 50rem;
+    margin-left: 1rem;
     }
   
     
     .div1 { 
         grid-area: 1 / 1 / 2 / 5; 
         background-color: lightgray;
-        min-height: 15rem;
-        width:60rem;
+        min-height: 20rem;
+        width:100rem;
         border-top: solid 2px;
         border-left: solid 2px;
         border-right: solid 2px;
@@ -27,22 +27,22 @@
         padding-left: 1rem;
      }
  
-     .parent p{
-        
+     /* .parent p{
+        background-color: red;
         font-size: small;
-        padding: 0.3rem;
-     }
-
-
+       
+      
+     } */
      .parent textarea{
        margin-bottom: auto;
        margin-left: 1rem;
+       margin-right: 1rem;
      }
     .div2 {
          grid-area: 2 / 1 / 6 / 2;
          background-color: lightgray;
          height: 28rem;
-         width:15rem;
+         width:25rem;
          border: solid 2px;
          border-right: solid 1px;
          }
@@ -54,7 +54,7 @@
          grid-area: 2 / 2 / 6 / 3;
          background-color: lightgray;
          height: 28rem;
-         width:15rem;
+         width:25rem;
          border: solid 2px;
          border-right: solid 1px;
          border-left: solid 1px;
@@ -68,7 +68,7 @@
         grid-area: 2 / 3 / 6 / 4; 
         background-color: lightgray;
         height: 28rem;
-        width:15rem;
+        width:25rem;
         border: solid 2px;
         border-right: solid 1px;
         border-left: solid 1px;
@@ -81,7 +81,7 @@
         grid-area: 2 / 4 / 6 / 5;
         background-color: lightgray;
         height: 28rem;
-        width:15rem;
+        width:25rem;
         border: solid 2px;
         border-left: solid 1px;
      }
@@ -89,3 +89,18 @@
         width: 50px !important;
         height: 50px !important;
     }  
+textarea{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    min-width: 20rem;
+}
+p{
+  
+    font-size: normal;
+    width: 20rem;
+    padding-left: 1rem;
+ }
+
+ img{
+    margin-left: 1rem;
+ }
