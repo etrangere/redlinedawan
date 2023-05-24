@@ -2,21 +2,50 @@ import { useParams } from 'react-router-dom';
 import DropDown from '../component/DropDown';
 import EtapeButtonContainer from '../component/EtapeButtonContainer';
 import './Ticketing.css';
-//import image_eye from "../img/eye.png";
+import { useEffect, useState } from 'react';
 
+export default function Ticketing(props) {
+  const { id } = useParams();
+  console.log(id);
+  const [loading, setLoading] = useState(true);
+  const [ticketingButton, setTicketingButton] = useState({});
 
-export default function Ticketing (props){
-    const { id } = useParams();
-    console.log(id); 
-
-    return (<>
-    <EtapeButtonContainer/>
-    <DropDown/>
+  useEffect(() => {
+    // Fetch ticketing button using the appropriate API endpoint or service
+    const fetchTicketingButton = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/ticketing`); // Replace with your API endpoint
+        const data = await response.json();
+        setTicketingButton({ url: data.url });
+       
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching ticketing button:', error);
+        setLoading(false);
+      }
+    };
+  
+    fetchTicketingButton();
    
-    
-    <div>  
-    <h1>Ticketing</h1>
-    </div> 
- 
-    </>)
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+
+
+  return (
+    <>
+    <EtapeButtonContainer />
+    <DropDown />
+    <div>
+      {ticketingButton.url ? (
+        <iframe src={ticketingButton.url} title="Ticketing" />
+      ) : (
+        <p>No ticketing URL available.</p>
+      )}
+    </div>
+  </>
+  );
 }

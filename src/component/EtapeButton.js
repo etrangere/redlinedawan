@@ -8,6 +8,6 @@ export default function EtapeButton (props){
     return (<>
     
                 <div id="custom-button-etape">{name}</div>
-				{/* <div class="remove-container-etape" id="remove-container-etape"></div> */}
+				
     </>)
 }
