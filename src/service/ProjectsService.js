@@ -1,4 +1,8 @@
-const BASE_URL = "https://portfolio.gourgen-khachatrian.fr:8444";
+//for server2
+//const BASE_URL = "https://portfolio.gourgen-khachatrian.fr:8444";
+//for dev
+const BASE_URL = "http://localhost:8080";
+
 
 export class ProjectsService {
   
