@@ -9,7 +9,7 @@ export default function ResourceButton({ name, link }) {
     // Fetch resource buttons using the project ID
     const fetchResourceButtons = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/resources`); // Replace with your API endpoint
+        const response = await fetch(`http://localhost:8082/resources`); // Replace with your API endpoint
         const data = await response.json();
         setResourceButtons(data);
         setLoading(false);

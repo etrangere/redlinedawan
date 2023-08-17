@@ -2,7 +2,7 @@
 import KanbanMethod from "./KanbanMethod";
 import './EtapeButtonContainer.css';
 import React, { useState } from 'react';
-import ResourceButtonContainer from "./ResourceButtonContainer";
+import ModalMenu from "./ModalMenu";
 
 
 
@@ -47,7 +47,7 @@ export default function EtapeButtonContainer () {
 
                 <hr></hr>
             <h1>Add resource button</h1>
-                <ResourceButtonContainer/>
+                <ModalMenu/>
                 <hr></hr>
                 
                                
