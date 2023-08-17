@@ -19,6 +19,29 @@ export class ProjectsService {
     return data;
   };
 
+  fetchDataById = async (projectId) => {
+    try {
+      const response = await fetch(`${BASE_URL}/projects/${projectId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        // Handle error response here
+        throw new Error('Failed to fetch project by ID');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      // Handle fetch or JSON parsing errors here
+      console.error('Error fetching project by ID:', error);
+      throw error;
+    }
+  };
+
   createData = async (newData) => {
     const response = await fetch(`${BASE_URL}/projects`, {
       method: 'POST',

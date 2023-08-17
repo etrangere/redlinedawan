@@ -1,16 +1,17 @@
 import "./ModalMenu.css"
 import { useEffect, useState } from 'react';
 import { ModalMenuService } from '../service/ModalMenuService.js';
+import { ProjectsService } from '../service/ProjectsService';
 import { useParams } from 'react-router-dom';
 
 
 export default function ModalMenu(props){
    
   const { id } = useParams();
-
   const projectId = id;
 
     const [resourcebutton, setResourcebutton] = useState([]);
+    const [projects, setProjects] = useState([]);
     const [newData, setNewData] = useState({
       name: '',
       type: '',
@@ -18,23 +19,30 @@ export default function ModalMenu(props){
       link_type: '',
       first_saving_date_time: '',
       last_update_date_time: '',
-      version: '',
-      projects: ''
+      version: ''     
     });
     const [editingId, setEditingId] = useState(null);
     const [showCreateForm, setShowCreateForm] = useState(false);
+
   
     useEffect(() => {
-      const resourcebuttonservice = new ModalMenuService();
-  
-      const fetchData = async () => {
-        const data = await resourcebuttonservice.fetchData();
-        setResourcebutton(data);
-      };
-  
-      fetchData();
-    }, []);
-  
+        const resourcebuttonservice = new ModalMenuService();
+        const projectService = new ProjectsService();
+
+        const fetchData = async () => {
+          // Fetch project data
+          const projectData = await projectService.fetchData();
+          // Fetch resource data
+          const resourceData = await resourcebuttonservice.fetchData();
+          setProjects(projectData);
+          setResourcebutton(resourceData);
+        };
+      
+        fetchData();
+      }, []);
+      
+      
+
     const handleCreate = async () => {
       const resourcebuttonservice = new ModalMenuService();
       // Create new data
@@ -48,7 +56,7 @@ export default function ModalMenu(props){
         first_saving_date_time: '',
         last_update_date_time: '',
         version: '',
-        projects:''
+        projects: projectId
       });
       setShowCreateForm(false);
       console.log(result)
@@ -75,9 +83,10 @@ export default function ModalMenu(props){
       setResourcebutton((prevData) => prevData.filter((item) => item.id !== id));
     };
   
-    const handleEdit = (id) => {
-      setEditingId(id);
-      const itemToEdit = resourcebutton.find((item) => item.id === id);
+    const handleEdit = async (id) => {
+        const itemToEdit = await resourcebutton.fetchDataById(id);
+        setEditingId(id);
+     // const itemToEdit = resourcebutton.find((item) => item.id === id);
       setNewData({ ...itemToEdit });
     };
   
@@ -107,7 +116,7 @@ export default function ModalMenu(props){
                           className="create-input"
                           value={newData.type}
                           onChange={(e) => setNewData({ ...newData, type: e.target.value })}
-                          key="link_type" // Add key prop
+                          key="type" // Add key prop
                         >
                           <option value="">Select resource type</option>
                           <option value="PDF">PDF</option>
@@ -195,7 +204,12 @@ export default function ModalMenu(props){
                 </tr>
             </thead>
             <tbody>
-              {resourcebutton.map((item) => (
+              {resourcebutton
+              //.filter((item) => item.projects && item.projects.id === projectId)
+                  .map((item) => (
+                    console.log('item.projects:', item.projects),
+                    console.log('projectId:', projectId),
+                  
                 <tr key={item.id}>
                   {/* to send id over link to the project component */}
                   <td>{item.id}</td>
@@ -220,7 +234,7 @@ export default function ModalMenu(props){
                             type="text"
                             value={newData.type}
                             onChange={(e) => setNewData({ ...newData,type: e.target.value })}
-                            key={item.id + '-link_type'} // Add key prop
+                            key={item.id + '-type'} // Add key prop
                           >
                             <option value="PDF">PDF</option>
                             <option value="WORD">WORD</option>
