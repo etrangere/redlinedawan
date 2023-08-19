@@ -18,6 +18,20 @@ export class ModalMenuService {
     return data;
    
   };
+
+  fetchByProjectData = async (id) => {
+    const response = await fetch(`${BASE_URL}/resources/project/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+     
+    });
+    const data = await response.json();
+
+    return data;
+   
+  };
 /* ?projectId=${projectId} */
   createData = async (/* projectId, */ newData) => {
     const response = await fetch(`${BASE_URL}/resources`, {

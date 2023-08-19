@@ -12,6 +12,7 @@ export default function ModalMenu(props){
 
     const [resourcebutton, setResourcebutton] = useState([]);
     const [projects, setProjects] = useState([]);
+    const [resourceDataByProjectId, setresourceDataByProjectId] = useState([]);
     const [newData, setNewData] = useState({
       name: '',
       type: '',
@@ -34,8 +35,16 @@ export default function ModalMenu(props){
           const projectData = await projectService.fetchData();
           // Fetch resource data
           const resourceData = await resourcebuttonservice.fetchData();
+
+          // Fetch resource data By Project Id
+          const resourceDataByProjectId = await resourcebuttonservice.fetchByProjectData(projectId);
           setProjects(projectData);
           setResourcebutton(resourceData);
+          setresourceDataByProjectId(resourceDataByProjectId);
+          console.log(projectData);
+          console.log(resourceData);
+          console.log(resourceDataByProjectId);
+          console.log(projectId);
         };
       
         fetchData();
@@ -205,7 +214,7 @@ export default function ModalMenu(props){
             </thead>
             <tbody>
               {resourcebutton
-              //.filter((item) => item.projects && item.projects.id === projectId)
+                  .filter((item) => resourceDataByProjectId.length !== 0) 
                   .map((item) => (
                     console.log('item.projects:', item.projects),
                     console.log('projectId:', projectId),
