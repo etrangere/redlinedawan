@@ -28,8 +28,7 @@ export default function ModalMenu(props){
         const modalMenuService = new ModalMenuService();
         const fetchData = async () => {      
           // Fetch resource data By Project Id
-          const resourceButtonsByProjectId = await modalMenuService.fetchByProjectData(projectId);
-         // setProjects(projectData);
+          const resourceButtonsByProjectId = await modalMenuService.fetchByProjectId(projectId);
           setresourceButtonsByProjectId(resourceButtonsByProjectId);
         };
       

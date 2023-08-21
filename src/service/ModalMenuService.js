@@ -19,7 +19,7 @@ export class ModalMenuService {
    
   };
 
-  fetchByProjectData = async (id) => {
+  fetchByProjectId = async (id) => {
     const response = await fetch(`${BASE_URL}/resources/project/${id}`, {
       method: 'GET',
       headers: {

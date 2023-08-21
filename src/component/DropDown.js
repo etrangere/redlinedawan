@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 import { ModalMenuService } from '../service/ModalMenuService';
 import { useParams } from 'react-router-dom';
 
-
 export default function DropDown(props) {
     const { id } = useParams();
     const projectId = id;
     const [isHovering, setIsHovering] = useState(false);
-    const [resourceDataByProjectId, setResourceDataByProjectId] = useState([]);
+    const [resourceButtons, setResourceButtons] = useState([]);
 
     const handleMouseEnter = () => {
         setIsHovering(true);
@@ -21,23 +20,14 @@ export default function DropDown(props) {
 
     useEffect(() => {
         const modalMenuService = new ModalMenuService();
-        const fetchResourceDataByProjectId = async () => {
-            
-
-            // Fetch resource data By Project Id
-            const resourceDataByProjectId = await modalMenuService.fetchByProjectData(projectId);
-            setResourceDataByProjectId(resourceDataByProjectId);
-            console.log('resourceDataByProjectId', resourceDataByProjectId); 
+        const fetchResourceButtonsByProjectId = async () => {
+            // Fetch resource buttons using the project ID
+            const buttons = await modalMenuService.fetchByProjectId(projectId);
+            setResourceButtons(buttons);
         };
         
-        fetchResourceDataByProjectId();
-        
-    }, []); 
-
-    
-      
-
-
+        fetchResourceButtonsByProjectId();
+    }, [projectId]);
 
     return (
         <div
@@ -55,9 +45,9 @@ export default function DropDown(props) {
                 flexWrap: 'wrap'
             }}
         >
-           
-            {resourceDataByProjectId.map(resource => (
-                <ResourceButton resource={resource.name} />
+            {/* Map through resourceButtons and create ResourceButton components */}
+            {resourceButtons.map((button) => (
+                <ResourceButton key={button.id} name={button.name} link={button.link} />
             ))}
         </div>
     );
