@@ -1,18 +1,16 @@
 import "./ModalMenu.css"
 import { useEffect, useState } from 'react';
 import { ModalMenuService } from '../service/ModalMenuService.js';
-import { ProjectsService } from '../service/ProjectsService';
 import { useParams } from 'react-router-dom';
 
 
 export default function ModalMenu(props){
    
-  const { id } = useParams();
-  const projectId = id;
+    const { id } = useParams();
+    const projectId = id;
 
     const [resourcebutton, setResourcebutton] = useState([]);
-    const [projects, setProjects] = useState([]);
-    const [resourceDataByProjectId, setresourceDataByProjectId] = useState([]);
+    const [resourceButtonsByProjectId, setresourceButtonsByProjectId] = useState([]);
     const [newData, setNewData] = useState({
       name: '',
       type: '',
@@ -27,24 +25,12 @@ export default function ModalMenu(props){
 
   
     useEffect(() => {
-        const resourcebuttonservice = new ModalMenuService();
-        const projectService = new ProjectsService();
-
-        const fetchData = async () => {
-          // Fetch project data
-          const projectData = await projectService.fetchData();
-          // Fetch resource data
-          const resourceData = await resourcebuttonservice.fetchData();
-
+        const modalMenuService = new ModalMenuService();
+        const fetchData = async () => {      
           // Fetch resource data By Project Id
-          const resourceDataByProjectId = await resourcebuttonservice.fetchByProjectData(projectId);
-          setProjects(projectData);
-          setResourcebutton(resourceData);
-          setresourceDataByProjectId(resourceDataByProjectId);
-          console.log(projectData);
-          console.log(resourceData);
-          console.log(resourceDataByProjectId);
-          console.log(projectId);
+          const resourceButtonsByProjectId = await modalMenuService.fetchByProjectData(projectId);
+         // setProjects(projectData);
+          setresourceButtonsByProjectId(resourceButtonsByProjectId);
         };
       
         fetchData();
@@ -53,9 +39,9 @@ export default function ModalMenu(props){
       
 
     const handleCreate = async () => {
-      const resourcebuttonservice = new ModalMenuService();
+      const modalMenuService = new ModalMenuService();
       // Create new data
-      const result = await resourcebuttonservice.createData(newData);
+      const result = await modalMenuService.createData(newData);
       setResourcebutton((prevData) => [...prevData, result]);
       setNewData({
         name: '',
@@ -68,17 +54,17 @@ export default function ModalMenu(props){
         projects: projectId
       });
       setShowCreateForm(false);
-      console.log(result)
+     // console.log(result)
     };
   
     
 
     const handleUpdate = async (id) => {
-      const resourcebuttonservice = new ModalMenuService();
+      const modalMenuService = new ModalMenuService();
       // Find the item being edited
       /* const itemToUpdate = projects.find((item) => item.id === id); */
       // Update data
-      const result = await resourcebuttonservice.updateData(id, newData);
+      const result = await modalMenuService.updateData(id, newData);
       setResourcebutton((prevData) =>
         prevData.map((item) => (item.id === id ? result : item))
       );
@@ -86,9 +72,9 @@ export default function ModalMenu(props){
     };
   
     const handleDelete = async (id) => {
-      const resourcebuttonservice = new ModalMenuService();
+      const modalMenuService = new ModalMenuService();
       // Delete data
-      await resourcebuttonservice.deleteData(id);
+      await modalMenuService.deleteData(id);
       setResourcebutton((prevData) => prevData.filter((item) => item.id !== id));
     };
   
@@ -213,12 +199,8 @@ export default function ModalMenu(props){
                 </tr>
             </thead>
             <tbody>
-              {resourcebutton
-                  .filter((item) => resourceDataByProjectId.length !== 0) 
+              {resourceButtonsByProjectId
                   .map((item) => (
-                    console.log('item.projects:', item.projects),
-                    console.log('projectId:', projectId),
-                  
                 <tr key={item.id}>
                   {/* to send id over link to the project component */}
                   <td>{item.id}</td>

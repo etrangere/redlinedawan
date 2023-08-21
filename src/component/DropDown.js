@@ -1,9 +1,15 @@
 import './DropDown.css';
-import SourceButton from './ResourceButton';
-import { useState } from 'react';
+import ResourceButton from './ResourceButton';
+import { useState, useEffect } from 'react';
+import { ModalMenuService } from '../service/ModalMenuService';
+import { useParams } from 'react-router-dom';
 
-export default function DropDown (props){
+
+export default function DropDown(props) {
+    const { id } = useParams();
+    const projectId = id;
     const [isHovering, setIsHovering] = useState(false);
+    const [resourceDataByProjectId, setResourceDataByProjectId] = useState([]);
 
     const handleMouseEnter = () => {
         setIsHovering(true);
@@ -13,13 +19,31 @@ export default function DropDown (props){
         setIsHovering(false);
     };
 
+    useEffect(() => {
+        const modalMenuService = new ModalMenuService();
+        const fetchResourceDataByProjectId = async () => {
+            
+
+            // Fetch resource data By Project Id
+            const resourceDataByProjectId = await modalMenuService.fetchByProjectData(projectId);
+            setResourceDataByProjectId(resourceDataByProjectId);
+            console.log('resourceDataByProjectId', resourceDataByProjectId); 
+        };
+        
+        fetchResourceDataByProjectId();
+        
+    }, []); 
+
+    
+      
+
+
+
     return (
         <div
             className="dropdown"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-
-            /*only css that must be changed */
             style={{
                 backgroundColor: '#80605b',
                 color: '#fff',
@@ -31,9 +55,10 @@ export default function DropDown (props){
                 flexWrap: 'wrap'
             }}
         >
-            {/* create button with name and url */}
-            <SourceButton />  
-            
+           
+            {resourceDataByProjectId.map(resource => (
+                <ResourceButton resource={resource.name} />
+            ))}
         </div>
-    )
+    );
 }
