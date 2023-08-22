@@ -18,6 +18,18 @@ export default function DropDown(props) {
         setIsHovering(false);
     };
 
+    const handleUpdate = async (id, updatedData) => {
+        const resourceButtonService = new ResourceButtonService();
+
+        // Update data
+        const result = await resourceButtonService.updateData(id, updatedData);
+
+        // Update the resourceButtons state with the updated data
+        setResourceButtons((prevButtons) =>
+            prevButtons.map((button) => (button.id === id ? result : button))
+        );
+    };
+
     useEffect(() => {
         const resourceButtonService = new ResourceButtonService();
         const fetchResourceButtonsByProjectId = async () => {
@@ -47,7 +59,12 @@ export default function DropDown(props) {
         >
             {/* Map through resourceButtons and create ResourceButton components */}
             {resourceButtons.map((button) => (
-                <ResourceButton key={button.id} name={button.name} link={button.link} />
+                <ResourceButton
+                    key={button.id}
+                    name={button.name}
+                    link={button.link}
+                    onUpdate={(updatedData) => handleUpdate(button.id, updatedData)} 
+                />
             ))}
         </div>
     );

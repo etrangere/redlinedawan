@@ -64,12 +64,14 @@ export default function ModalMenu(props){
       /* const itemToUpdate = projects.find((item) => item.id === id); */
       // Update data
       const result = await resourceButtonService.updateData(id, newData);
-      setResourcebutton((prevData) =>
+      setresourceButtonsByProjectId((prevData) =>
         prevData.map((item) => (item.id === id ? result : item))
       );
       setEditingId(null); // Reset editing state
     };
   
+
+
     const handleDelete = async (id) => {
       const resourceButtonService = new ResourceButtonService();
       // Delete data
@@ -78,11 +80,20 @@ export default function ModalMenu(props){
     };
   
     const handleEdit = async (id) => {
-        const itemToEdit = await resourcebutton.fetchDataById(id);
+      const resourceButtonService = new ResourceButtonService();
+    
+      try {
+        // Fetch the existing resource data using the appropriate service
+        const existingResourceData = await resourceButtonService.fetchResourceButtonById(id);
+    
+        // Set the editing state and the existing data
         setEditingId(id);
-     // const itemToEdit = resourcebutton.find((item) => item.id === id);
-      setNewData({ ...itemToEdit });
+        setNewData({ ...existingResourceData });
+      } catch (error) {
+        console.error('Error fetching resource data for edit:', error);
+      }
     };
+    
   
     const toggleCreateForm = () => {
       setShowCreateForm((prevValue) => !prevValue);
@@ -208,8 +219,9 @@ export default function ModalMenu(props){
                       <input
                         className="edit-input"
                         type="text"
-                        value={newData.name}
+                        value={newData.name || ''}
                         onChange={(e) => setNewData({ ...newData, name: e.target.value })}
+                        onBlur={() => handleUpdate(item.id)}
                         key={item.id + '-name'} // Add key prop
                       />
                     ) : (

@@ -1,7 +1,7 @@
 import './ResourceButton.css';
 import React from 'react';
 
-export default function ResourceButton({ name, link }) {
+export default function ResourceButton({ name, link , onUpdate}) {
   return (
     <a href={link} rel="noopener noreferrer" target="frame1">
       <div className='source-button'>{name}</div>

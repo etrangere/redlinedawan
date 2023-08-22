@@ -21,6 +21,21 @@ export class ResourceButtonService {
    
   };
 
+
+  fetchResourceButtonById = async (id) => {
+    const response = await fetch(`${BASE_URL}/resources/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+     
+    });
+    const data = await response.json();
+
+    return data;
+   
+  };
+
   fetchByProjectId = async (id) => {
     const response = await fetch(`${BASE_URL}/resources/project/${id}`, {
       method: 'GET',
