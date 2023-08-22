@@ -1,6 +1,6 @@
 import "./ModalMenu.css"
 import { useEffect, useState } from 'react';
-import { ModalMenuService } from '../service/ModalMenuService.js';
+import { ResourceButtonService } from '../service/ResourceButtonService.js';
 import { useParams } from 'react-router-dom';
 
 
@@ -25,10 +25,10 @@ export default function ModalMenu(props){
 
   
     useEffect(() => {
-        const modalMenuService = new ModalMenuService();
+        const resourceButtonService = new ResourceButtonService();
         const fetchData = async () => {      
           // Fetch resource data By Project Id
-          const resourceButtonsByProjectId = await modalMenuService.fetchByProjectId(projectId);
+          const resourceButtonsByProjectId = await resourceButtonService.fetchByProjectId(projectId);
           setresourceButtonsByProjectId(resourceButtonsByProjectId);
         };
       
@@ -38,9 +38,9 @@ export default function ModalMenu(props){
       
 
     const handleCreate = async () => {
-      const modalMenuService = new ModalMenuService();
+      const resourceButtonService = new ResourceButtonService();
       // Create new data
-      const result = await modalMenuService.createData(newData);
+      const result = await resourceButtonService.createData(newData);
       setResourcebutton((prevData) => [...prevData, result]);
       setNewData({
         name: '',
@@ -59,11 +59,11 @@ export default function ModalMenu(props){
     
 
     const handleUpdate = async (id) => {
-      const modalMenuService = new ModalMenuService();
+      const resourceButtonService = new ResourceButtonService();
       // Find the item being edited
       /* const itemToUpdate = projects.find((item) => item.id === id); */
       // Update data
-      const result = await modalMenuService.updateData(id, newData);
+      const result = await resourceButtonService.updateData(id, newData);
       setResourcebutton((prevData) =>
         prevData.map((item) => (item.id === id ? result : item))
       );
@@ -71,9 +71,9 @@ export default function ModalMenu(props){
     };
   
     const handleDelete = async (id) => {
-      const modalMenuService = new ModalMenuService();
+      const resourceButtonService = new ResourceButtonService();
       // Delete data
-      await modalMenuService.deleteData(id);
+      await resourceButtonService.deleteData(id);
       setResourcebutton((prevData) => prevData.filter((item) => item.id !== id));
     };
   

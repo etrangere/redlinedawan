@@ -1,7 +1,7 @@
 import './DropDown.css';
 import ResourceButton from './ResourceButton';
 import { useState, useEffect } from 'react';
-import { ModalMenuService } from '../service/ModalMenuService';
+import { ResourceButtonService } from '../service/ResourceButtonService';
 import { useParams } from 'react-router-dom';
 
 export default function DropDown(props) {
@@ -19,10 +19,10 @@ export default function DropDown(props) {
     };
 
     useEffect(() => {
-        const modalMenuService = new ModalMenuService();
+        const resourceButtonService = new ResourceButtonService();
         const fetchResourceButtonsByProjectId = async () => {
             // Fetch resource buttons using the project ID
-            const buttons = await modalMenuService.fetchByProjectId(projectId);
+            const buttons = await resourceButtonService.fetchByProjectId(projectId);
             setResourceButtons(buttons);
         };
         

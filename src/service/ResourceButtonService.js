@@ -5,7 +5,7 @@
 //for dev
 const BASE_URL = "http://localhost:8082";
 
-export class ModalMenuService {
+export class ResourceButtonService {
   
   fetchData = async () => {
     const response = await fetch(`${BASE_URL}/resources`, {
