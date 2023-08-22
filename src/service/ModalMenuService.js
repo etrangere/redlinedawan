@@ -1,5 +1,7 @@
 //for server2
 //const BASE_URL = "https://portfolio.gourgen-khachatrian.fr:8444";
+//->in package.json after version on top ->"homepage": "/68.redlinedawan",
+//->basename in index.js -> <BrowserRouter basename="/68.redlinedawan">
 //for dev
 const BASE_URL = "http://localhost:8082";
 
