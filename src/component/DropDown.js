@@ -19,11 +19,12 @@ export default function DropDown(props) {
     };
 
     const handleUpdate = async (id, updatedData) => {
+        console.log('Updating data for ID:', id);
         const resourceButtonService = new ResourceButtonService();
 
         // Update data
         const result = await resourceButtonService.updateData(id, updatedData);
-
+        console.log('Update result:', result);
         // Update the resourceButtons state with the updated data
         setResourceButtons((prevButtons) =>
             prevButtons.map((button) => (button.id === id ? result : button))

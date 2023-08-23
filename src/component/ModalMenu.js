@@ -8,9 +8,11 @@ export default function ModalMenu(props){
    
     const { id } = useParams();
     const projectId = id;
-
-    const [resourcebutton, setResourcebutton] = useState([]);
+    const [resourceButton, setResourceButton] = useState([]);
     const [resourceButtonsByProjectId, setresourceButtonsByProjectId] = useState([]);
+    const [editingId, setEditingId] = useState(null);
+    const [showCreateForm, setShowCreateForm] = useState(false);
+
     const [newData, setNewData] = useState({
       name: '',
       type: '',
@@ -20,10 +22,7 @@ export default function ModalMenu(props){
       last_update_date_time: '',
       version: ''     
     });
-    const [editingId, setEditingId] = useState(null);
-    const [showCreateForm, setShowCreateForm] = useState(false);
-
-  
+     
     useEffect(() => {
         const resourceButtonService = new ResourceButtonService();
         const fetchData = async () => {      
@@ -33,15 +32,19 @@ export default function ModalMenu(props){
         };
       
         fetchData();
-      }, []);
+      }, [projectId]);
       
-      
-
+    
     const handleCreate = async () => {
+
+      if (!newData.name.trim()) {
+        // Prevent button creation if name is empty or consists of only whitespace characters
+        return;
+    }
       const resourceButtonService = new ResourceButtonService();
       // Create new data
-      const result = await resourceButtonService.createData(newData);
-      setResourcebutton((prevData) => [...prevData, result]);
+      const resourceButton = await resourceButtonService.createData(newData);
+      setResourceButton((prevData) => [...prevData, resourceButton]);
       setNewData({
         name: '',
         type: '',
@@ -63,9 +66,9 @@ export default function ModalMenu(props){
       // Find the item being edited
       /* const itemToUpdate = projects.find((item) => item.id === id); */
       // Update data
-      const result = await resourceButtonService.updateData(id, newData);
-      setresourceButtonsByProjectId((prevData) =>
-        prevData.map((item) => (item.id === id ? result : item))
+      const resourceButton = await resourceButtonService.updateData(id, newData);
+      setResourceButton((prevData) =>
+        prevData.map((item) => (item.id === id ? resourceButton : item))
       );
       setEditingId(null); // Reset editing state
     };
@@ -76,7 +79,7 @@ export default function ModalMenu(props){
       const resourceButtonService = new ResourceButtonService();
       // Delete data
       await resourceButtonService.deleteData(id);
-      setResourcebutton((prevData) => prevData.filter((item) => item.id !== id));
+      setResourceButton((prevData) => prevData.filter((item) => item.id !== id));
     };
   
     const handleEdit = async (id) => {
@@ -234,7 +237,7 @@ export default function ModalMenu(props){
                           <select
                             className="edit-input"
                             type="text"
-                            value={newData.type}
+                            value={newData.type || ''}
                             onChange={(e) => setNewData({ ...newData,type: e.target.value })}
                             key={item.id + '-type'} // Add key prop
                           >
@@ -256,7 +259,7 @@ export default function ModalMenu(props){
                         <input
                           className="edit-input"
                           type="text"
-                          value={newData.link}
+                          value={newData.link || ''}
                           onChange={(e) => setNewData({ ...newData, link: e.target.value })}
                           key={item.id + '-link'} // Add key prop
                         />
@@ -270,7 +273,7 @@ export default function ModalMenu(props){
                           <input
                             className="edit-input"
                             type="text"
-                            value={newData.link_type}
+                            value={newData.link_type || ''}
                             onChange={(e) => setNewData({ ...newData, link_type: e.target.value })}
                             key={item.id + '-link_type'} // Add key prop
                           >
@@ -285,7 +288,7 @@ export default function ModalMenu(props){
                       <input
                         className="edit-input"
                         type="date"
-                        value={newData.first_saving_date_time}
+                        value={newData.first_saving_date_time || ''}
                         onChange={(e) => setNewData({ ...newData, first_saving_date_time: e.target.value })}
                         key={item.id + '-first_saving_date_time'} // Add key prop
                       />
@@ -298,7 +301,7 @@ export default function ModalMenu(props){
                       <input
                         className="edit-input"
                         type="date"
-                        value={newData.last_update_date_time}
+                        value={newData.last_update_date_time || ''}
                         onChange={(e) => setNewData({ ...newData, last_update_date_time: e.target.value })}
                         key={item.id + '-last_update_date_time'} // Add key prop
                       />
@@ -311,7 +314,7 @@ export default function ModalMenu(props){
                       <input
                         className="edit-input"
                         type="text"
-                        value={newData.version}
+                        value={newData.version || ''}
                         onChange={(e) => setNewData({ ...newData, version: e.target.value })}
                         key={item.id + '-version'} // Add key prop
                       />
