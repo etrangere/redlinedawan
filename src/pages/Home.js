@@ -31,6 +31,12 @@ export default function Home(props) {
   }, []);
 
   const handleCreate = async () => {
+   
+    if (!newData.name.trim()) {
+      // Prevent button creation if name is empty or consists of only whitespace characters
+      return;
+  }
+
     const projectsService = new ProjectsService();
     // Create new data
     const result = await projectsService.createData(newData);
